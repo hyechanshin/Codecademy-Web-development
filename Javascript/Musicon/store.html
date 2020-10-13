@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Musicon</title>
     <link href="public/style.css" rel="stylesheet">
+    <script src="handlebars.min.js"></script>
+    <script id="templateHB" type="text/x-handlebars-template">
+      {{#each instrument}}
+      <article class="instrument">
+          <img class="{{this.image}}" src="https://content.codecademy.com/courses/learn-handlebars/musicon/electronic-keyboard.png" alt="{{this.name}}">
+          <section class="details">
+            <h2 class="{{this.name}}">Electronic Keyboard</h2>
+            <p class="{{this.description}}">A piano welcomed to the 21th century. Pianists celebrate the compact form factor and the diversity of synthesized rhythms all in one masterful musical machine.</p>
+            <p class="{{this.price}}"><del>Price: $1,999.00</del></p>
+            <p class="{{this.sale}}">On Sale! $1,699.89</p>
+          </section>
+        </article>
+        {{/each}}
+    </script>
   </head>
 
   <body>

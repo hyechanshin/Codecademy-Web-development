@@ -1,4 +1,5 @@
 // All valid credit card numbers
+const test = [4, 5, 3, 9, 6, 8, 9, 8, 8, 7, 7, 0, 5, 7, 9, 8];
 const valid1 = [4, 5, 3, 9, 6, 7, 7, 9, 0, 8, 0, 1, 6, 8, 0, 8];
 const valid2 = [5, 5, 3, 5, 7, 6, 6, 7, 6, 8, 7, 5, 1, 4, 3, 9];
 const valid3 = [3, 7, 1, 6, 1, 2, 0, 1, 9, 9, 8, 5, 2, 3, 6];
@@ -31,22 +32,25 @@ const validateCred = (array) => {
 // Remove the last array
     temp.pop();
 // Reverse the array
-    array.reverse();
+    temp.reverse();
 // Multiple odd numbers
-    for (let i=1; i < array.length; i++) {
+    for (let i=1; i < temp.length; i++) {
       if(i % 2 !== 0) {
-        array[i] *= 2;
-        if (array[i] > 9) {
-          array[i] -= 9;
+        if (temp[i] > 9) {
+          temp[i] -= 9;
         }
-        i++;
-      } 
+      } else {
+        temp[i] *= 2;
+        if (temp[i] > 9) {
+          temp[i] -= 9;
+        }
+      }
     }
-    return array;
+    return temp;
 } 
 
-console.log(validateCred(valid1));
-  
+console.log(validateCred(test));
+//console.log(test);
 
 
 

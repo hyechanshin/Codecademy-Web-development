@@ -59,3 +59,7 @@ ReactDOM.render(
   <Random />, 
   document.getElementById('app')
 );
+
+// Notice that the <h1></h1>‘s text is white if the screen’s background is a darker color,
+// but the text is black is the screen’s background is a lighter color. Similarly,
+// the <button></button> changes colors based on whether the background is dark or light.

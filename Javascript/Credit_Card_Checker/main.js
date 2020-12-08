@@ -46,15 +46,21 @@ const validateCred = (array) => {
         }
       }
     }
-    return temp;
-} 
+// Sum up all the numbers in the array
+    for (var i = 0, sum = 0; i < temp.length; sum += temp[i++]);
+// First select last element
+    let last_element = array[array.length - 1];
+// Now sum up with elements in the temp array and last element
+    const num = sum + last_element;
+// If the sum modulo 10 is 0 then the array contains a valid number
+    if (num % 10 == 0) {
+      return "Valid";
+    } else {
+      return "Invalid";
+    }
+}
 
 console.log(validateCred(test));
 //console.log(test);
 
-
-
-
-
-
-
+// Made by Hyechan Shin 2020

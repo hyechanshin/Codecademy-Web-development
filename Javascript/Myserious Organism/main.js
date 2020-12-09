@@ -40,13 +40,25 @@ const pAequorFactory = (num, bases) => {
           }
         }
       }
-      console.log(`specimen #1 and specimen #2 have ${Math.floor(100 / 15 * score)}% DNA in common`)
+      console.log(`specimen #1 and specimen #2 have ${Math.floor(100 / 15 * score)}% DNA in common`);
+    },
+    willLikelySurvive() {
+      let dnaScore = 0;
+      const survivedStrand = [];
+      for (let l; l < this.dna.length; l++) {
+        if (this.dna[l] === 'C' || this.dna[l] === 'G') {
+          dnaScore += 1;
+        } 
+      }
+      if (Math.floor(100 / 15 * dnaScore) > 60) {
+        survivedStrand.push(this.dna);
+      }
+      return console.log(survivedStrand);
     }
   }
-}
+};
 
-console.log(mockUpStrand(1));
-console.log(pAequorFactory(3, [2, 2, 2]));
+console.log (pAequorFactory(2, mockUpStrand()));
 
 
 

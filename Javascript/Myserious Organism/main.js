@@ -13,6 +13,8 @@ const mockUpStrand = () => {
   return newStrand
 }
 
+let currentDna = mockUpStrand();
+
 const pAequorFactory = (num, bases) => {
   return {
     specimenNum: num,
@@ -24,12 +26,21 @@ const pAequorFactory = (num, bases) => {
       while (this.dna[i] === newBase) {
         newBase = returnRandBase();
       }
-      this.dna[randomIndex] = newBase;
+      this.dna[i] = newBase;
       return this.dna;
-      },
-      compareDNA() {
-        
+    },
+    compareDNA() {
+      let example1 = this.dna;
+      let example2 = currentDna;
+      let score = 0;
+      for (let j; j < example1.length; j++) {
+        for (let k; k < example2.length; k++) {
+          if (j === k && example1[j] === example2[k]) {
+            score = score + 1;
+          }
+        }
       }
+      console.log(`specimen #1 and specimen #2 have ${Math.floor(100 / 15 * score)}% DNA in common`)
     }
   }
 }

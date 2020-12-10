@@ -15,4 +15,22 @@ class SearchBar extends React.Component {
             return <li key="sortByOptionValue">{sortByOption}</li>;
         });
     }
+    render() {
+        return (
+            <div class="SearchBar">
+                <div class="SearchBar-sort-options">
+                    <ul>
+                    <!-- Use .renderSortByOptions() to sort the businesses by their options -->
+                    </ul>
+                </div>
+                <div class="SearchBar-fields">
+                    <input placeholder="Search Businesses" />
+                    <input placeholder="Where?" />
+                </div>
+                <div class="SearchBar-submit">
+                    <a>Let's Go</a>
+                </div>
+            </div>
+        )
+    }
 }

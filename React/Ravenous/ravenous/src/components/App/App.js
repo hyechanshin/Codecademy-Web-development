@@ -7,8 +7,16 @@ import SearchBar from './../SearchBar/SearchBar';
 import Yelp from './../../util/Yelp';
 
 class App extends React.Component {
+  constructor() {
+    this.state = {
+      businesses: []
+    };
+    this.searchYelp.bind(this);
+  }
   searchYelp(term, location, sortBy) {
-    console.log(`You are searching for ${term}, ${location}, and ${sortBy}`);
+    Yelp.search(term, location, sortBy).then(business => {
+      this.setState({ business: businesses });
+    })
   }
   render() {
     return (

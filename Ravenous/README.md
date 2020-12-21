@@ -1,3 +1,8 @@
+Ravenous -  A React app to search for restaurants using the Yelp API
+
+![Image of example](example.jpg)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -32,7 +32,7 @@ class CopyCatContainer extends React.Component {
   
   render() {
     const copying = this.state.copying;
-    const toggleTape = this.toggleTape
+    const toggleTape = this.toggleTape;
     const value = this.state.input;
     const handleChange = this.handleChange;
     
@@ -42,9 +42,10 @@ class CopyCatContainer extends React.Component {
         toggleTape={toggleTape}
         value={value}
         handleChange={handleChange}
+        name={"Ben"}
       />
       );
-  };
+  }
 }
 
 

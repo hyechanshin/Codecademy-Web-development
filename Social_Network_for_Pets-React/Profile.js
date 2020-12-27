@@ -11,6 +11,8 @@ export class Profile extends React.Component {
     const isLoading = this.state.userData === null ? true : false;
     const name = isLoading ? 'Loading...' : this.state.userData.name;
     const bio = isLoading ? 'Bio goes here...' : this.state.userData.bio;
+    const friends = isLoading ? [] : this.state.userData.friends;
+
     let className = 'Profile';
     if (this.state.userData === null) {
       className += ' loading';
@@ -18,13 +20,16 @@ export class Profile extends React.Component {
 
     return (
       <div className={className}>
-        <div className="profile-picture"></div>
+        <div className="profile-picture">
+          {!isLoading && (<img src={this.state.userData.profilePictureUrl} alt="" />
+          )}
+        </div>
         <div className="profile-body">
           <h2>{name}</h2>
           <h3>@{this.props.username}</h3>
           <p>{bio}</p>
           <h3>My friends</h3>
-          <Userlist usernames={[]} onChoose={this.props.onChoose} />
+          <Userlist usernames={friends} onChoose={this.props.onChoose} />
         </div>
       </div>
     );
@@ -39,5 +44,16 @@ export class Profile extends React.Component {
 
   componentDidMount() {
     this.loadUserData();
+  }
+
+  componentWillUnmount() {
+    cancelFetch(this.fetchID);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.username !== prevProps.username) {
+      cancelFetch(this.fetchID);
+      this.loadUserData();
+    }
   }
 }

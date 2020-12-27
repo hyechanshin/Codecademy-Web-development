@@ -3,11 +3,15 @@ import { fetchUserData, cancelFetch } from './dataFetcher';
 import { Userlist } from './Userlist';
 
 export class Profile extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { userData: null };
+  }
   render() {
     const isLoading = true;
 
     let className = 'Profile';
-    if (isLoading) {
+    if (this.state.userData === null) {
       className += ' loading';
     }
 
@@ -23,5 +27,16 @@ export class Profile extends React.Component {
         </div>
       </div>
     );
+  }
+
+  loadUserData() {
+    this.setState({ userData: null });
+    this.fetchID = fetchUserData(this.props.username, (userData) => {
+      this.setState({ userData });
+    });
+  }
+
+  componentDidMount() {
+    this.loadUserData();
   }
 }

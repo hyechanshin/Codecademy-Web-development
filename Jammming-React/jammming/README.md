@@ -1,3 +1,11 @@
+Jammming -  A React app to build a website that allows users to search the Spotify library, create a custom playlist, then save it to their Spotify account by using knowledge of React components, passing state, and requests with the Spotify API
+
+![Image of example](jammming.jpg)
+
+It has been deployed with surge. Visit this website to see the project.
+
+http://jammming-kirikeria.surge.sh/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

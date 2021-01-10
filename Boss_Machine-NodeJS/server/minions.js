@@ -1,4 +1,4 @@
-const { getAllFromDatabase, updateInstanceInDatabase } = require('../../../../Downloads/Compressed/project-4-boss-machine-solution/project-4-boss-machine-solution/server/db');
+const { getAllFromDatabase, updateInstanceInDatabase, getFromDatabaseById } = require('../../../../Downloads/Compressed/project-4-boss-machine-solution/project-4-boss-machine-solution/server/db');
 
 const minionsRouter = require('express').Router();
 
@@ -42,6 +42,15 @@ minionsRouter.delete('/:minionId', (req, res, next) => {
     req.send();
 });
 
+minionsRouter.param('workId', (req, res, next, id) => {
+    const work = getFromDatabaseById('work', id)
+    if (work) {
+        req.work = work;
+        next();
+    } else {
+        res.status(404).send();
+    }
+});
 
 minionsRouter.get('/:minionId/work', (req, res, next) => {
     const work = getAllFromDatabase('work').filter((singleWork) => {

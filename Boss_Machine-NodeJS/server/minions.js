@@ -1,3 +1,5 @@
+const { getAllFromDatabase, updateInstanceInDatabase } = require('../../../../Downloads/Compressed/project-4-boss-machine-solution/project-4-boss-machine-solution/server/db');
+
 const minionsRouter = require('express').Router();
 
 module.export = minionsRouter;
@@ -31,7 +33,7 @@ minionsRouter.put('/:minionId', (req, res, next) => {
 });
 
 minionsRouter.delete('/:minionId', (req, res, next) => {
-    const deleted = deleteFromDatabasebyId('minions', req.param.minionId);
+    const deleted = deleteFromDatabasebyId('minions', req.params.minionId);
     if (deleted) {
         req.status(204);
     } else {
@@ -40,3 +42,37 @@ minionsRouter.delete('/:minionId', (req, res, next) => {
     req.send();
 });
 
+
+minionsRouter.get('/:minionId/work', (req, res, next) => {
+    const work = getAllFromDatabase('work').filter((singleWork) => {
+        return singleWork.minionId === req.params.minionId;
+    });
+    res.send(work);
+});
+
+minionsRouter.post('/:minionId/work', (req, res, next) => {
+    const workToAdd = req.body;
+    workToAdd.minionId = req.params.minionId;
+    const createdWork = addToDatabase('work', workToAdd);
+    res.status(201).send(createdWork);
+});
+
+
+minionsRouter.put('/:minionId/work/:workId ', (req, res, next) => {
+    if (req.params.minionId !== req.params.body) {
+        res.status(400).send();
+    } else {
+        updatedWork = updateInstanceInDatabase('work', req.body)
+        res.send(updatedWork);
+    }
+});
+
+minionsRouter.delete('/:minionId/work/:workId', (req, res, next) => {
+    const deleted = deleteFromDatabasebyId('work', req.params.workId);
+    if (deleted) {
+        req.status(204);
+    } else {
+        req.status(500);
+    }
+    req.send();
+});

@@ -1,21 +1,19 @@
-const { deleteAllFromDatabase } = require('./db');
+const meetingsRouter = require('express').Router();
 
-const meetingRouter = require('express').Router();
+module.exports = meetingsRouter;
 
-module.export = meetingRouter;
+const { getAllFromDatabase, addToDatabase, deleteAllFromDatabase, createMeeting } = require('./db');
 
-
-meetingRouter.get('/', (req, res, next) => {
-    res.send(getAllFromDatabase('meetings'));
+meetingsRouter.get('/', (req, res, next) => {
+  res.send(getAllFromDatabase('meetings'));
 });
 
-meetingRouter.post('/', (req, res, next) => {
-    let newMeeting = addToDatabase('meetings', createMeeting());
-    res.status(201).send(newMeeting);
+meetingsRouter.post('/', (req, res, next) => {
+  let newMeeting = addToDatabase('meetings', createMeeting());
+  res.status(201).send(newMeeting);
 });
 
-meetingRouter.delete('/:meetings', (req, res, next) => {
-    deleteAllFromDatabase('meetings');
-    req.status(204).send();
+meetingsRouter.delete('/', (req, res, next) => {
+  deleteAllFromDatabase('meetings');
+  res.status(204).send();
 });
-

@@ -102,7 +102,7 @@ Returns a SQL query string that will find the number of female medalists.
 */
 
 const numberWomenMedalists = country => {
-  return;
+  return `SELECT COUNT(DISTINCT name) AS count FROM GoldMedal WHERE country = '${country}' AND gender = 'Women' ORDER BY count`;
 };
 
 /*
@@ -110,7 +110,19 @@ Returns a SQL query string that will find the athlete with the most medals.
 */
 
 const mostMedaledAthlete = country => {
-  return;
+  return `SELECT name FROM GoldMedal WHERE country = '${country}' GROUP BY name ORDER BY count(*) DESC LIMIT 1;`;
+};
+
+/* helper functions for getting order by statement by field and direction */
+const getOrdered = (field, sortAscending) => {
+  if (field) {
+      if (sortAscending) {
+          return `ORDER BY ${field} ASC;`;
+      } else {
+          return `ORDER BY ${field} DESC;`;
+      }
+  }
+  return '';
 };
 
 /*
@@ -119,7 +131,8 @@ optionally ordered by the given field in the specified direction.
 */
 
 const orderedMedals = (country, field, sortAscending) => {
-  return;
+  let ordered = getOrdered(field, sortAscending);
+  return `SELECT * from GoldMedal WHERE country = '${country}' ${ordered};`;
 };
 
 /*
@@ -130,7 +143,11 @@ aliased as 'percent'. Optionally ordered by the given field in the specified dir
 */
 
 const orderedSports = (country, field, sortAscending) => {
-  return;
+  let ordered = getOrdered(field, sortAscending);
+  return `WITH pq AS (SELECT * FROM GoldMedal WHERE country = '${country}')
+    SELECT sport, COUNT(sport) AS count,
+    (COUNT(sport) * 100 / (select COUNT(*) FROM pq)) AS percent
+    FROM pq GROUP BY sport ${ordered};`;
 };
 
 module.exports = {

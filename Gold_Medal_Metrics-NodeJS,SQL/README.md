@@ -1,8 +1,6 @@
 # Gold Medal Metrics
 
-## Project Overview
-
-In this project you will be writing all the SQL statements for an Olympic metrics reporting web application called Gold Medal Metrics.
+This is an Olympic metrics reporting web application called Gold Medal Metrics. It's a full-stack **SERN** App (SQL,  [Express](https://www.npmjs.com/package/express), [React](https://github.com/facebook/react) and [Node](https://nodejs.org/en/)).
 
 Gold Medal Metrics allows users to:
 
@@ -12,21 +10,103 @@ Gold Medal Metrics allows users to:
  - View a list of every Olympic win a country has with the year, season, winner name, city, and event.
  - Sort the list of Olympic wins by any of these attributes.
 
-## How To Begin
+**The only file coded by the author is `sql.js`**, that contains helper JavaScript functions which return the **SQL queries** (as strings) that operate Gold Medal Metrics. **The remaining project files were NOT coded by the author.**
 
-To start, download the starting code for this project <a href="https://s3.amazonaws.com/codecademy-content/PRO/skill-paths/backend-javascript/projects/gold-medal-metrics/project-5-gold-medal-metrics-start.zip" target="_blank">here</a>. After downloading the zip folder, double click it to uncompress it and access the contents of this project.
 
-To view the webpage, run `npm run webpack` to compile the front-end files, and follow that with `open index.html` from the root directory of this project. To start your server, run `npm install` and then `node server.js`. Refresh your browser to collect the information from the server. Every time you change **server.js**, you will have to restart your server before the changes will take effect. To do this press "control + c" in the bash terminal where your server is running (or close the terminal) to shut it down and then re-run `node server.js` to start it again. While your server is running, you will not be able to run commands in the bash terminal, so open a new terminal if you want to run other commands.
 
-## Implementation Details
+## Table of contents
 
-To complete this project, you will need to write a series of JavaScript functions that return the SQL queries (as strings) that operate Gold Medal Metrics. The functions themselves are stubbed out in **sql.js** with comments about the query each should return. Below we list the different functions and the expected returned query.
+* [General info](#general-info)
+* [Screenshots](#screenshots)
+* [Technologies](#technologies)
+* [Setup](#setup)
+* [Features](#features)
+* [Status](#status)
+* [Inspiration](#inspiration)
+* [Contact](#contact)
 
-### Gold Medal Metric Functions
+
+
+## General info
+
+This project was coded to learn how to write **SQL queries**.
+
+
+
+## Screenshots
+
+Image#1: Home screen
+
+![home-screen](img/image01.png)
+
+
+
+Image#2:  `/country/argentina` screen
+
+![home-screen](img/image02.png)
+
+
+
+Image#3: `/country/argentina` screen
+
+![home-screen](img/image03.png)
+
+
+
+Image#4 `/country/argentina` screen
+
+![home-screen](img/image04.png)
+
+## Technologies
+
+* [React](https://github.com/facebook/react) - version 15.6.1,
+* [Express](https://www.npmjs.com/package/express) -version 4.15.4,
+* [Sqlite3](https://www.npmjs.com/package/sqlite3)  -version 4.0.6,
+* [Node](https://nodejs.org/en/) -version 12.16.1
+
+
+
+## Setup
+
+* **Clone or download the repo.**
+
+* **Install all the dependencies** listed on the`package.json` file by running:
+
+  ```bash
+  npm install
+  ```
+
+* **Compile the front-end files**:
+
+  ```bash
+  npm run webpack
+  ```
+
+* **Run the `server.js` file**:
+
+  ```bash
+  node server
+  ```
+
+* Now the app is served on https://localhost:3001.
+
+* To **test the helper functions inside the `sql.js` file**:
+
+  ```
+  npm test
+  ```
+
+   You will see a list of tests that ran with information about whether or not each test passed. After this list, you will see more specific output about why each failing test failed.
+
+
+
+## Features
+
+These are the helper functions of the `sql.js` file, with its functionality:
 
 #### createCountryTable
 
-Returns the SQL command that will create a table, named `Country` with the following columns:
+Returns the SQL command that creates a table, named `Country` with the following columns:
 
  - `name` a required text field.
  - `code` a required text field.
@@ -35,7 +115,7 @@ Returns the SQL command that will create a table, named `Country` with the follo
 
 #### createGoldMedalTable
 
-Returns the SQL command that will create a table, named `GoldMedal` with the following columns:
+Returns the SQL command that creates a table, named `GoldMedal` with the following columns:
 
  - `id` an integer that will function as the primary key.
  - `year` a required integer.
@@ -50,57 +130,58 @@ Returns the SQL command that will create a table, named `GoldMedal` with the fol
 
 #### goldMedalNumber
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the number of gold medals that country has won in all Olympic games, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the number of gold medals that country has won in all Olympic games, aliased to the name `count`.
 
 #### mostSummerWins
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the year where the given country won the most summer medals, along with the number of medals aliased to 'count'
+Takes an argument, the name of a country. Returns the SQL command that retrieves the year where the given country won the most summer medals, along with the number of medals aliased to 'count'
 
 #### mostWinterWins
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the year where the given country won the most winter medals, along with the number of medals aliased to 'count'
+Takes an argument, the name of a country. Returns the SQL command that retrieves the year where the given country won the most winter medals, along with the number of medals aliased to 'count'
 
 #### bestYear
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the `year` that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the `year` that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
 
 #### bestDiscipline
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the `discipline` in which that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the `discipline` in which that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
 
 #### bestSport
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the `sport` in which that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the `sport` in which that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
 
 #### bestEvent
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the `event` in which that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the `event` in which that country won the most Olympic medals, and how many medals were won, aliased to the name `count`.
 
 #### numberMenMedalists
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the number of men who have won Olympic medals for that country, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the number of men who have won Olympic medals for that country, aliased to the name `count`.
 
 #### numberWomenMedalists
 
-Takes an argument, the name of a country. Returns the SQL command that will retrieve the number of women who have won Olympic medals for that country, aliased to the name `count`.
+Takes an argument, the name of a country. Returns the SQL command that retrieves the number of women who have won Olympic medals for that country, aliased to the name `count`.
 
 #### mostMedaledAthlete
 
-Takes an argument, the name of a country. returns the sql command that will retrieve the `name` of the athlete who won olympic medals for that country, aliased to the name `count`.
+Takes an argument, the name of a country. returns the SQL command that retrieves the `name` of the athlete who won olympic medals for that country, aliased to the name `count`.
 
 #### orderedMedals
 
-Takes three arguments, the name of the country and, optionally, a `field` to sort the results by and a boolean, `sortAscending` representing whether the list should be ascending in value (`true`) or descending (`false`). This function should return a SQL query that returns all fields for every Olympic medal won by the given country in the specified order, ascending or descending.
+Takes three arguments, the name of the country and, optionally, a `field` to sort the results by and a boolean, `sortAscending` representing whether the list should be ascending in value (`true`) or descending (`false`). This function returns a SQL query that returns all fields for every Olympic medal won by the given country in the specified order, ascending or descending.
 
-#### Bonus: orderedSports
+#### orderedSports
 
-Takes three arguments, the name of the country and, optionally, a `field` to sort the results by and a boolean, `sortAscending` representing whether the list should be ascending in value (`true`) or descending (`false`). This function should return a SQL query that retrieves all the sports that country has received a Gold Medal in in the specified order, ascending or descending. Additionally the query returned should return the number of times the given country received a medal in that sport, aliased to the name `count`, furthermore the query should calculate, as a percentage, how much of the country's Olympic gold medals were in that sport, aliased to the name 'percent'.
+Takes three arguments, the name of the country and, optionally, a `field` to sort the results by and a boolean, `sortAscending` representing whether the list should be ascending in value (`true`) or descending (`false`). This function returns a SQL query that retrieves all the sports that country has received a Gold Medal in in the specified order, ascending or descending. Additionally the query returned returns the number of times the given country received a medal in that sport, aliased to the name `count`, furthermore the query calculates, as a percentage, how much of the country's Olympic gold medals were in that sport, aliased to the name 'percent'.
 
-## Testing
+## Status
 
-A testing suite has been provided for you, checking for all essential functionality and
-edge cases.
+Project is _finished_. 
 
-To run these tests, first, open the root project directory in your terminal. Then run `npm install` to install all necessary testing dependencies (if you haven't already). Finally, run `npm test`. You will see a list of tests that ran with information about whether or not each test passed. After this list, you will see more specific output about why each failing test failed.
 
-As you implement functionality, run the tests to ensure you are creating correctly named variables and functions that return the proper values. The tests will additionally help you identify edge cases that you may not have anticipated when first writing the functions.
+
+## Inspiration
+
+This project was based on [CodeCademy's Web Development career path](https://www.codecademy.com/learn/paths/web-development).

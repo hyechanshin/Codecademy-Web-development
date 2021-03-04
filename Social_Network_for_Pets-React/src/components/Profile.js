@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchUserData, cancelFetch } from './dataFetcher';
+import { fetchUserData, cancelFetch } from '../dataFetcher';
 import { Userlist } from './Userlist';
 
 export class Profile extends React.Component {

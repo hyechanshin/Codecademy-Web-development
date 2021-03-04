@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Profile } from './Profile';
-import { Directory } from './Directory';
+import { Dictionary } from './Dictionary';
 
-class App extends React.Component {
+export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -33,7 +32,7 @@ class App extends React.Component {
         />
       );
     } else {
-      body = <Directory onChoose={this.handleChoose} />;
+      body = <Dictionary onChoose={this.handleChoose} />;
     }
 
     return (
@@ -55,5 +54,3 @@ class App extends React.Component {
     );
   }
 }
-
-ReactDOM.render(<App />, document.getElementById('app'));

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Userlist } from './Userlist';
 
-export function Directory(props) {
+export function Dictionary(props) {
   return (
     <div className="Directory">
       <h2>User directory</h2>
